@@ -9,6 +9,11 @@
         table{width: 100%; border-collapse: collapse; margin-top: 10px;}
         td{padding: 8px;}
         h1,h3{margin: 0;}
+    @font-face {
+        font-family: 'ipaexg';
+        src: url("{{ public_path('fonts/ipaexg.ttf') }}") format('truetype');
+    }
+    body { font-family: 'ipaexg'; }
     </style>
 </head>
 <body>
