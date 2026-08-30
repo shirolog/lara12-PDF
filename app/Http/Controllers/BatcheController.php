@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Batche;
 use App\Models\Course;
-use Illuminate\Bus\Batch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 

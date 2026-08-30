@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Payment;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
+
 
 class ReportController extends Controller
 {
