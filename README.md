@@ -1,5 +1,121 @@
-Laravel pdf libraryを使用
+# Student Management Project
 
-https://github.com/barryvdh/laravel-dompdf
+Laravelで制作した学生管理システムです。
 
-composer require barryvdh/laravel-dompdf
+## 概要
+
+学生、講師、コース、バッチ、受講情報、支払い情報を管理するWebアプリケーションです。
+
+各情報の登録・表示・編集・削除を行うことができます。
+
+また、支払い情報から支払明細書をPDFで表示する機能を実装しています。
+
+## 主な機能
+
+### 学生管理
+
+* 学生情報の登録
+* 学生情報の一覧表示
+* 学生情報の詳細表示
+* 学生情報の編集
+* 学生情報の削除
+
+### 講師管理
+
+* 講師情報の登録
+* 講師情報の一覧表示
+* 講師情報の詳細表示
+* 講師情報の編集
+* 講師情報の削除
+
+### コース管理
+
+* コース情報の登録
+* コース情報の一覧表示
+* コース情報の詳細表示
+* コース情報の編集
+* コース情報の削除
+
+### バッチ管理
+
+* バッチ情報の登録
+* バッチ情報の一覧表示
+* バッチ情報の詳細表示
+* バッチ情報の編集
+* バッチ情報の削除
+* コースとの関連付け
+
+### 受講管理
+
+* 受講情報の登録
+* 受講情報の一覧表示
+* 受講情報の詳細表示
+* 受講情報の編集
+* 受講情報の削除
+* 学生・バッチとの関連付け
+
+### 支払い管理
+
+* 支払い情報の登録
+* 支払い情報の一覧表示
+* 支払い情報の詳細表示
+* 支払い情報の編集
+* 支払い情報の削除
+* 受講情報との関連付け
+* 支払明細書のPDF表示
+
+## データベース構成
+
+以下のテーブルを使用しています。
+
+* `students`：学生情報
+* `teachers`：講師情報
+* `courses`：コース情報
+* `batches`：バッチ情報
+* `enrollments`：受講情報
+* `payments`：支払い情報
+
+## 使用技術
+
+* PHP
+* Laravel
+* MySQL
+* Blade
+* Bootstrap
+* HTML / CSS
+
+## 開発環境
+
+* Windows
+* XAMPP
+* Visual Studio Code
+
+## 工夫した点
+
+* LaravelのResource Controllerを利用したCRUD処理
+* Eloquent ORMによるテーブル間のリレーション
+* バリデーションによる入力値のチェック
+* 支払い明細書のPDF出力
+* 外部キーによるデータの関連付け
+
+## セットアップ
+
+```bash
+git clone [リポジトリURL]
+cd [プロジェクト名]
+
+composer install
+
+cp .env.example .env
+
+php artisan key:generate
+```
+
+`.env`にデータベースの接続情報を設定した後、以下を実行します。
+
+```bash
+php artisan migrate
+php artisan serve
+```
+
+ブラウザから表示されたURLにアクセスしてください。
