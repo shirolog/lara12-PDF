@@ -2,13 +2,17 @@
 
 Laravelで制作した学生管理システムです。
 
+学生、講師、コース、バッチ、受講情報、支払い情報を管理することができます。
+
 ## 概要
 
-学生、講師、コース、バッチ、受講情報、支払い情報を管理するWebアプリケーションです。
+学生管理を中心としたWebアプリケーションです。
 
-各情報の登録・表示・編集・削除を行うことができます。
+学生・講師・コースなどの各種情報を登録・表示・編集・削除できるCRUD機能を実装しています。
 
-また、支払い情報から支払明細書をPDFで表示する機能を実装しています。
+また、コースとバッチ、学生と受講情報、受講情報と支払い情報など、テーブル間のリレーションを利用してデータを管理しています。
+
+支払い情報については、支払明細書をPDFで表示する機能も実装しています。
 
 ## 主な機能
 
@@ -74,6 +78,19 @@ Laravelで制作した学生管理システムです。
 * `batches`：バッチ情報
 * `enrollments`：受講情報
 * `payments`：支払い情報
+* `users`：ユーザー情報
+
+主なリレーションは以下の通りです。
+
+```text
+Course
+  │
+  └── Batch
+        │
+        └── Enrollment ── Student
+              │
+              └── Payment
+```
 
 ## 使用技術
 
@@ -83,6 +100,17 @@ Laravelで制作した学生管理システムです。
 * Blade
 * Bootstrap
 * HTML / CSS
+* barryvdh/laravel-dompdf
+
+## 主な実装内容
+
+* LaravelによるCRUD処理
+* Eloquent ORMによるテーブル間のリレーション
+* Form RequestではなくController内でのバリデーション
+* LaravelのRoute Model Binding
+* Seederによる初期ユーザーの作成
+* DomPDFを利用したPDF出力
+* 外部キーによるデータの関連付け
 
 ## 開発環境
 
@@ -90,32 +118,59 @@ Laravelで制作した学生管理システムです。
 * XAMPP
 * Visual Studio Code
 
-## 工夫した点
-
-* LaravelのResource Controllerを利用したCRUD処理
-* Eloquent ORMによるテーブル間のリレーション
-* バリデーションによる入力値のチェック
-* 支払い明細書のPDF出力
-* 外部キーによるデータの関連付け
-
 ## セットアップ
+
+### 1. リポジトリを取得
 
 ```bash
 git clone [リポジトリURL]
 cd [プロジェクト名]
+```
 
+### 2. Composerパッケージをインストール
+
+```bash
 composer install
+```
 
+### 3. `.env`を作成
+
+```bash
 cp .env.example .env
+```
 
+`.env`のデータベース設定を環境に合わせて変更してください。
+
+### 4. アプリケーションキーを生成
+
+```bash
 php artisan key:generate
 ```
 
-`.env`にデータベースの接続情報を設定した後、以下を実行します。
+### 5. マイグレーションとSeederを実行
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
+```
+
+Seederを実行すると、テスト用ユーザーが1件作成されます。
+
+### 6. Laravelの開発サーバーを起動
+
+```bash
 php artisan serve
 ```
 
-ブラウザから表示されたURLにアクセスしてください。
+表示されたURLにアクセスしてください。
+
+## PDF機能
+
+支払明細書のPDF表示には `barryvdh/laravel-dompdf` を使用しています。
+
+パッケージは `composer install` によってインストールされます。
+
+初めてパッケージを導入する場合は、以下のコマンドを使用します。
+
+```bash
+composer require barryvdh/laravel-dompdf
+```
