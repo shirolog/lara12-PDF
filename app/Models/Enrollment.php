@@ -18,10 +18,10 @@ class Enrollment extends Model
         'fee',
     ];
 
-    // batcheとのリレーション関係
-    public function batche() {
+    // batchとのリレーション関係
+    public function batch() {
 
-        return $this->belongsTo(Batche::class, 'batch_id');
+        return $this->belongsTo(batch::class, 'batch_id');
     }
 
     // studentとのリレーション関係

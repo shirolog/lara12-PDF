@@ -42,7 +42,7 @@ class PaymentController extends Controller
         $payment->amount = $request->input('amount');
         $payment->save();
 
-        return redirect()->route('payments.index')->with('flash_message', 'payment Added!');
+        return redirect()->route('payments.index')->with('flash_message', 'Payment Added!');
     }
 
     public function show(Payment $payment)
@@ -74,13 +74,13 @@ class PaymentController extends Controller
         $payment->amount = $request->input('amount');
         $payment->save();
 
-        return redirect()->route('payments.index')->with('flash_message', 'payment Updated!');
+        return redirect()->route('payments.index')->with('flash_message', 'Payment Updated!');
     }
 
     public function destroy(Payment $payment)
     {
         $payment->delete();
 
-        return redirect()->route('payments.index')->with('flash_message', 'payment Deleted!');
+        return redirect()->route('payments.index')->with('flash_message', 'Payment Deleted!');
     }
 }

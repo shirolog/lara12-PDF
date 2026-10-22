@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Batche;
+use App\Models\batch;
 use Illuminate\Http\Request;
 use App\Models\Enrollment;
 use App\Models\Student;
@@ -13,14 +13,14 @@ class EnrollmentController extends Controller
     public function index() {
 
         
-        $enrollments = Enrollment::with('batche', 'student')->get();
+        $enrollments = Enrollment::with('batch', 'student')->get();
 
         return view('enrollments.index', compact('enrollments'));
     }
 
     public function create() {
         
-        $batches = Batche::all();
+        $batches = batch::all();
         $students = Student::all();
 
         return view('enrollments.create', compact('batches', 'students'));
@@ -52,20 +52,20 @@ class EnrollmentController extends Controller
         $enrollment->fee = $request->input('fee');
         $enrollment->save();
 
-        return redirect()->route('enrollments.index')->with('flash_message', 'enrollment Added!');
+        return redirect()->route('enrollments.index')->with('flash_message', 'Enrollment Added!');
         
     }
 
     public function show(Enrollment $enrollment) {
 
-        $enrollment = $enrollment->load('batche', 'student');
+        $enrollment = $enrollment->load('batch', 'student');
 
         return view('enrollments.show', compact('enrollment'));
     }
 
     public function edit(Enrollment $enrollment) {
 
-        $batches = Batche::all();
+        $batches = batch::all();
         $students = Student::all();
 
         return view('enrollments.edit', compact('enrollment', 'batches', 'students'));
@@ -95,7 +95,7 @@ class EnrollmentController extends Controller
         $enrollment->fee = $request->input('fee');
         $enrollment->save();
 
-        return redirect()->route('enrollments.index')->with('flash_message', 'enrollment Updated!');
+        return redirect()->route('enrollments.index')->with('flash_message', 'Enrollment Updated!');
         
     }
 
@@ -103,7 +103,7 @@ class EnrollmentController extends Controller
 
         $enrollment->delete();
 
-        return redirect()->route('enrollments.index')->with('flash_message', 'enrollment Deleted!');
+        return redirect()->route('enrollments.index')->with('flash_message', 'Enrollment Deleted!');
 
     }
 

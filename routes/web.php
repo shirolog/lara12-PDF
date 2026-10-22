@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BatcheController;
+use App\Http\Controllers\batchController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
@@ -44,13 +44,13 @@ Route::prefix('courses')->group(function () {
 });
 
 Route::prefix('batches')->group(function () {
-    Route::get('/', [BatcheController::class, 'index'])->name('batches.index');
-    Route::get('/create', [BatcheController::class, 'create'])->name('batches.create');
-    Route::post('/create', [BatcheController::class, 'store'])->name('batches.store');
-    Route::get('/show/{batche}', [BatcheController::class, 'show'])->name('batches.show');
-    Route::get('/edit/{batche}', [BatcheController::class, 'edit'])->name('batches.edit');
-    Route::put('/edit/{batche}', [BatcheController::class, 'update'])->name('batches.update');
-    Route::delete('/{batche}', [BatcheController::class, 'destroy'])->name('batches.destroy');
+    Route::get('/', [batchController::class, 'index'])->name('batches.index');
+    Route::get('/create', [batchController::class, 'create'])->name('batches.create');
+    Route::post('/create', [batchController::class, 'store'])->name('batches.store');
+    Route::get('/show/{batch}', [batchController::class, 'show'])->name('batches.show');
+    Route::get('/edit/{batch}', [batchController::class, 'edit'])->name('batches.edit');
+    Route::put('/edit/{batch}', [batchController::class, 'update'])->name('batches.update');
+    Route::delete('/{batch}', [batchController::class, 'destroy'])->name('batches.destroy');
 });
 
 Route::prefix('enrollments')->group(function () {

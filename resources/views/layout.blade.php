@@ -51,7 +51,7 @@
                     <a href="{{ url('/students') }}" class="{{ Request::is('students*') ? 'active' : '' }}">Student</a>
                     <a href="{{ url('/teachers') }}" class="{{ Request::is('teachers*') ? 'active' : '' }}">Teacher</a>
                     <a href="{{ url('/courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }}">Courses</a>
-                    <a href="{{ url('/batches') }}" class="{{ Request::is('batches*') ? 'active' : '' }}">Batches</a>
+                    <a href="{{ url('/batches') }}" class="{{ Request::is('batches*') ? 'active' : '' }}">batches</a>
                     <a href="{{ url('/enrollments') }}" class="{{ Request::is('enrollments*') ? 'active' : '' }}">Enrollment</a>
                     <a href="{{ url('/payments') }}" class="{{ Request::is('payments*') ? 'active' : '' }}">Payment</a>
                 </div>

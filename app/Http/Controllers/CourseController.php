@@ -43,7 +43,7 @@ class CourseController extends Controller
         $course->duration = $request->input('duration');
         $course->save();
 
-        return redirect()->route('courses.index')->with('flash_message', 'course Added!');
+        return redirect()->route('courses.index')->with('flash_message', 'Course Added!');
         
     }
 
@@ -82,7 +82,7 @@ class CourseController extends Controller
         $course->duration = $request->input('duration');
         $course->save();
 
-        return redirect()->route('courses.index')->with('flash_message', 'course Updated!');
+        return redirect()->route('courses.index')->with('flash_message', 'Course Updated!');
     }
 
     public function destroy(Course $course) {
@@ -90,6 +90,6 @@ class CourseController extends Controller
         
         $course->delete();
 
-        return redirect()->route('courses.index')->with('flash_message', 'course Deleted!');
+        return redirect()->route('courses.index')->with('flash_message', 'Course Deleted!');
     }
 }

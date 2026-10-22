@@ -33,7 +33,7 @@
             <td>Amount</td>
         </tr>
         <tr>
-            <td><h3>{{ $payment->enrollment->batche->name }}</h3></td>
+            <td><h3>{{ $payment->enrollment->batch->name }}</h3></td>
             <td><h3>{{ number_format($payment->amount) }}</h3></td>
         </tr>
     </table>

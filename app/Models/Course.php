@@ -24,6 +24,6 @@ class Course extends Model
     // batchesとのリレーション関係
     public function batches() {
 
-        return $this->hasMany(Batche::class);
+        return $this->hasMany(Batch::class);
     }
 }
