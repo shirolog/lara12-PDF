@@ -10,34 +10,29 @@ use Illuminate\Support\Facades\Validator;
 
 class BatchController extends Controller
 {
-    public function index() {
-
-
-
+    public function index()
+    {
         $batches = Batch::with('course')->get();
 
         return view('batches.index', compact('batches'));
     }
 
-    public function create() {
-
+    public function create()
+    {
         $courses = Course::all();
 
         return view('batches.create', compact('courses'));
     }
 
-    public function store(Request $request) {
-
-        
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-
             'name' => 'required',
             'course_id' => 'required',
-            'start_date' => 'required'
+            'start_date' => 'required',
         ]);
 
-        if($validator->fails()){
-
+        if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
@@ -49,41 +44,33 @@ class BatchController extends Controller
         $batch->save();
 
         return redirect()->route('batches.index')->with('flash_message', 'Batch Added!');
-        
     }
 
-    public function show(batch $batch) {
-
+    public function show(batch $batch)
+    {
         $batch->load('course');
 
         return view('batches.show', compact('batch'));
     }
 
-    public function edit(batch $batch) {
-
+    public function edit(batch $batch)
+    {
         $courses = Course::all();
-
 
         return view('batches.edit', compact('batch', 'courses'));
     }
 
-
-    public function update(Request $request, batch $batch) {
-
-        
-        
+    public function update(Request $request, batch $batch)
+    {
         $validator = Validator::make($request->all(), [
-
             'name' => 'required',
             'course_id' => 'required',
-            'start_date' => 'required'
+            'start_date' => 'required',
         ]);
 
-        if($validator->fails()){
-
+        if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-
 
         $batch->name = $request->input('name');
         $batch->course_id = $request->input('course_id');
@@ -93,13 +80,10 @@ class BatchController extends Controller
         return redirect()->route('batches.index')->with('flash_message', 'Batch Updated!');
     }
 
-    public function destroy(batch $batch) {
-
+    public function destroy(batch $batch)
+    {
         $batch->delete();
 
         return redirect()->route('batches.index')->with('flash_message', 'Batch Deleted!');
     }
-
-
-
 }
